@@ -1,0 +1,40 @@
+<section class="home">
+  <div class="home__division">
+    <div class="text">
+      <h3>Welcome</h3>
+      <h2>
+        Fill the form to
+      <br />
+        validate your number
+      </h2>
+    </div>
+    <div class="form__division">
+      <form class="example-form" (ngSubmit)="validateNumber()" >
+        <mat-form-field appearance="fill" class="country-field">
+            <mat-select [(value)]="contryNumber">
+              <mat-select-trigger class="select-trigger">
+                <img  class="flag" width="20" height="20" src={{contryNumber.flags.svg}}>
+                <span>(+{{contryNumber.callingCodes[0]}})</span>
+              </mat-select-trigger>
+              <mat-option class="flag-option" *ngFor="let contryInfo of contriesInfo" [value]="contryInfo">
+                <img class="flag" width="20" height="20" src={{contryInfo.flags.svg}}>
+                <span>{{contryInfo.name}} (+{{contryInfo.callingCodes[0]}})</span>
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="number-field" appearance="fill">
+          <mat-label>Telephone</mat-label>
+          <input name="phoneNumber" [(ngModel)]="phoneNumber" type="tel" matInput placeholder="555-555-1234" class="number-input" >
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="button">
+          Validate
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </form>
+      <app-user-table [userData]="userData"></app-user-table>
+    </div>
+  </div>
+  <p>This page was developed by Thainá Weingartner Chagas  ©2021</p>
+</section>
+
+

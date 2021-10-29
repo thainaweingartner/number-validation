@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$cyan-palette, 700);
+$my-accent: mat.define-palette(mat.$pink-palette, 600, 500, 700);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ )
+));
+
+@include mat.all-component-themes($my-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h3 { font-family: Sora; }
+.flag-option {
+  .mat-option-text{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+.ng-tns-c64-0 {
+  height: 52px;
+  border: 0;
+  & mat-select-trigger {
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
