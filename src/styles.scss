@@ -26,13 +26,47 @@ h3 { font-family: Sora; }
   }
 }
 
-.ng-tns-c64-0 {
-  height: 52px;
-  border: 0;
+.mat-form-field-infix.ng-tns-c78-0 {
+  border-top: 0;
+  padding-top: 10px;
   & mat-select-trigger {
-    padding-top: 8px;
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+}
+
+.number-field {
+  width: 250px;
+  &.mat-form-field-appearance-fill .mat-form-field-flex{
+    height: 50px;
+    border-radius: 0 4px 0 0;
+  }
+}
+
+.country-field {
+  width: 105px;
+  &.mat-form-field-appearance-fill .mat-form-field-flex{
+    height: 50px;
+    border-right: 0.5px solid #6F6F6F;
+    border-radius: 4px 0 0 0;
+  }
+}
+
+.my-custom-snackbar-valid {
+  background-color: #CDDC39;
+  &.mat-snack-bar-container{
+    min-width: 100px;
+    color: #313131;
+    margin-bottom: 50px;
+  }
+}
+
+.my-custom-snackbar-invalid {
+  background-color: #D81B60;
+  &.mat-snack-bar-container{
+    min-width: 100px;
+    color: #fff;
+    margin-bottom: 50px;
   }
 }

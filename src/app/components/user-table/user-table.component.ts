@@ -1,5 +1,5 @@
-import { ValidationResponse } from './../../models/validation-response.model';
-import { NumberService } from './../../services/number.service';
+import { ValidationResponse } from '../../models/validation-response.model';
+import { NumberService } from '../../services/number.service';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 export interface User {

@@ -56,23 +56,19 @@
   justify-content: center;
 }
 
-.country-field {
-  width: 105px;
-  border-radius: 4px 0 0 0;
-}
-
-.number-field {
-  width: 250px;
-  border-radius: 0 4px 0 0;
-}
-
 .button {
   margin-left: 20px;
-  width: 150px;
+  width: fit-content;
   height: 50px;
+  display: flex;
+  align-items: center;
+  line-height: 24px;
+  justify-content: center;
 }
 
 .flag {
-  object-fit: contain;
+  object-fit: cover;
+  width: 20px;
+  height: 14px;
 }
 

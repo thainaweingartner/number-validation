@@ -1,4 +1,4 @@
-export interface ContriesResponse {
+export interface CountriesResponse {
   name:           string;
   topLevelDomain: string[];
   alpha2Code:     string;

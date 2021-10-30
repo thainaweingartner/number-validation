@@ -1,13 +1,9 @@
-import { ContryService } from './../services/contry.service';
+import { CountryService } from './../services/country.service';
 import { NumberService } from './../services/number.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ValidationResponse } from '../models/validation-response.model';
-import { ContriesResponse } from '../models/contry-response.model';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { CountriesResponse } from '../models/country-response.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -19,21 +15,28 @@ export class HomeComponent implements OnInit{
   @Output() userData: any[] = [];
 
   phoneNumber: number = 5555551234;
-  contriesInfo: ContriesResponse[] = [];
-  contryNumber: any;
+  countriesInfo: CountriesResponse[] = [];
+  countryNumber: any;
 
-  constructor(private numberService: NumberService, private contryService: ContryService) { }
+  constructor(private numberService: NumberService, private countryService: CountryService, private popUp: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.contryService.getContrysInfo().subscribe((response: ContriesResponse[]) => {
-      this.contriesInfo = response
-      this.contryNumber = response[0];
+    this.countryService.getCountrysInfo().subscribe((response: CountriesResponse[]) => {
+      this.countriesInfo = response
+      this.countryNumber = response[31];
     }, error => console.log(error));
   }
 
   validateNumber() {
-    this.numberService.validate(`${this.contryNumber.callingCodes[0]}${this.phoneNumber}`).subscribe((response: ValidationResponse) => {
+    this.numberService.validate(`${this.countryNumber.callingCodes[0]}${this.phoneNumber}`).subscribe((response: ValidationResponse) => {
       this.userData = [response];
+      this.openPopUp(response.valid);
     }, error => console.error(error));
+  }
+
+  openPopUp(validation: boolean) {
+    this.popUp.open(`This number is ${validation ? 'valid' : 'invalid'}!`, '', {
+      panelClass: validation ? 'my-custom-snackbar-valid' : 'my-custom-snackbar-invalid'
+    });
   }
 }

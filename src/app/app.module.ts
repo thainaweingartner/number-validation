@@ -11,11 +11,17 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { UserTableComponent } from './home/user-table/user-table.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UserTableComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    UserTableComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +33,8 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     HttpClientModule,
     MatTableModule,
+    MatSnackBarModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
