@@ -10,17 +10,19 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxMaskModule } from 'ngx-mask'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UserTableComponent
+    UserTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +33,12 @@ import { NgxMaskModule } from 'ngx-mask'
     MatButtonModule,
     MatSelectModule,
     FormsModule,
+		ReactiveFormsModule,
     HttpClientModule,
     MatTableModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [],

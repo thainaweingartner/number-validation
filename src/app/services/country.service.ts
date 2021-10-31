@@ -7,15 +7,9 @@ import { CountriesResponse } from '../models/country-response.model';
   providedIn: 'root'
 })
 export class CountryService {
-  private countrysData: any = [];
   private countryInfoUrl = 'https://restcountries.com/v2/all';
 
   constructor(private httpClient: HttpClient) {
-    this.countrysData = {};
-  }
-
-  get countrysInfo() {
-    return this.countrysData;
   }
 
   getCountrysInfo(): Observable<CountriesResponse[]> {

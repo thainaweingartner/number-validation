@@ -9,29 +9,41 @@
       </h2>
     </div>
     <div class="form__division">
-      <form class="example-form" (ngSubmit)="validateNumber()" >
-        <mat-form-field appearance="fill" class="country-field">
-            <mat-select [(value)]="countryNumber">
-              <mat-select-trigger class="select-trigger">
-                <img  class="flag" src={{countryNumber.flags.svg}}>
-                <span>(+{{countryNumber.callingCodes[0]}})</span>
-              </mat-select-trigger>
-              <mat-option class="flag-option" *ngFor="let countryInfo of countriesInfo" [value]="countryInfo">
-                <img class="flag" src={{countryInfo.flags.svg}}>
-                <span>{{countryInfo.name}} (+{{countryInfo.callingCodes[0]}})</span>
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="number-field" appearance="fill">
-          <mat-label>Telephone</mat-label>
-          <input required name="phoneNumber" [(ngModel)]="phoneNumber" type="tel" matInput mask="000-0000-0000" placeholder="Ex. 555-555-1234" class="number-input" >
-        </mat-form-field>
-        <button mat-raised-button color="primary" class="button">
-          Validate
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-      </form>
-      <app-user-table [userData]="userData"></app-user-table>
+      <div *ngIf="countriesInfo.length > 0 as infos; else loader" class="infos">
+        <form class="example-form" [formGroup]="phoneNumberForm" (ngSubmit)="validateNumber()" >
+          <mat-form-field appearance="fill" class="country-field">
+            <mat-label>Country Code</mat-label>
+              <mat-select  *ngIf="countriesInfo.length > 0 as infos; else loader" formControlName="countryNumber">
+                <mat-select-trigger class="select-trigger" *ngIf="getSelectedCountryNumber() as countryNumber">
+                  <img  class="flag" src={{countryNumber.flag}}>
+                  <span>(+{{countryNumber.callingCodes[0]}})</span>
+                </mat-select-trigger>
+                <mat-option class="flag-option" *ngFor="let countryNumber of countriesInfo" [value]="countryNumber">
+                  <img class="flag" src={{countryNumber.flag}}>
+                  <span>{{countryNumber.name}} (+{{countryNumber.callingCodes[0]}})</span>
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError('countryNumber', 'required')">Country code is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="number-field" appearance="fill">
+            <mat-label>Telephone</mat-label>
+            <input required matInput name="phoneNumber" formControlName="phoneNumber" type="tel" placeholder="Ex.5555551234" class="number-input" >
+            <mat-error *ngIf="hasError('phoneNumber', 'required')">Phone number is required.</mat-error>
+            <mat-error *ngIf="hasError('phoneNumber', 'range')">Must have between 4 and 12 numbers.</mat-error>
+            <mat-error *ngIf="hasError('phoneNumber', 'pattern')">Provide just numbers.</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" class="button" type="submit" [disabled]="phoneNumberForm.invalid">
+            Validate
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </form>
+      </div>
+      <app-user-table [userData]="userData" (clear)="clearTable()"></app-user-table>
+      <ng-template #loader>
+        <div class="loader">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
     </div>
   </div>
   <p>This page was developed by Thainá Weingartner Chagas  ©2021</p>

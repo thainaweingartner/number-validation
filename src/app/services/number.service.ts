@@ -12,15 +12,13 @@ export class NumberService {
   private numberData: any = {};
   private url = `https://apilayer.net/api/validate`;
 
-  constructor(private httpClient: HttpClient) {
-    this.numberData = {};
-  }
-
-  get numberInfo() {
-    return this.numberData;
-  }
+  constructor(private httpClient: HttpClient) {}
 
   validate(phoneNumber: string): Observable<ValidationResponse> {
+    const numberLenght = phoneNumber.length;
+    if (!phoneNumber || numberLenght > 14 || numberLenght < 6) {
+      throw Error('Phone number can not be empty');
+    }
     const queryParams = {
       access_key: ACCESS_KEY,
       number: phoneNumber
@@ -32,7 +30,7 @@ export class NumberService {
     this.numberData = user;
   }
 
-  getNumberData(): void {
+  getNumberData(): Observable<ValidationResponse> {
     return this.numberData;
   }
 }
