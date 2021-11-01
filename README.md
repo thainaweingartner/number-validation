@@ -6,6 +6,10 @@ An website to validate phone numbers all around the world. The user just have to
 
 The prototype was created based on UX and UI concepts as functional use of colors, a clean layout with clear information of what the website does and how the user shoud use it. Intuitive input with error messages, and a select input to choose the country code with alternation of information when showing the options and after selecting it. The use of snackbars to display relevant informations. A table to show the numbers already validated and informations about them, so the user dont need to lose time retyping numbers. The possibility to clear the table data if wanted. [Figma Prototype](https://www.figma.com/file/DT7NiX0qD2wHK74KPMMpw4/G%2BD?node-id=0%3A1).
 
+## Acessing WebProject
+
+Access [Number Validation](https://number-validation-thai.netlify.app) to see the project runing with out cloning any code.
+
 ## Running the project
 
 In order to run the project, clone it to your computer and make sure you have npm and ng installed. After that run `npm install` to install the project dependencies. Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
