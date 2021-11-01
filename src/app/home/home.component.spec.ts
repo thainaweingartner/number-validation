@@ -68,26 +68,6 @@ describe(HomeComponent.name, () => {
       .toBeNull();
   });
 
-  // it(`${HomeComponent.name} number shouldnt be shorter than 4 or longer than 12`, () => {
-  //   const inputNumber = fixture.nativeElement.querySelector('.number-input');
-  //   expect(inputNumber).toBeGreaterThan(3);
-  //   expect(inputNumber).toBeLessThan(12);
-  //     //simular preenchimento do formulário e validação
-  // });
-
-  // it(`${HomeComponent.name} should click the button and call the valitation`, () => {
-  //   //simular preenchimento do formulário e click do botão
-  //   component.phoneNumberForm = {
-  //     phoneNumber: '84994592656',
-  //     countryNumber: '',
-  //   },
-  //   const numberValidation = buildNumberValidation();
-  //   const button = fixture.nativeElement
-  //     .querySelector('.button');
-  //   fixture.detectChanges();
-  //   expect(numberService.validate).toHaveBeenCalled();
-  // });
-
   it('Should test form validity', () => {
     fixture.detectChanges();
     const form = component.phoneNumberForm;
@@ -125,16 +105,7 @@ describe(HomeComponent.name, () => {
     expect(table).toBeTruthy();
   });
 
-  //corrigir
   it(`#${HomeComponent.prototype.openPopUp.name} should open when validate a number`, () => {
-    const numberValidation = buildNumberValidation();
-    spyOn(component.popUp,"open").and.callThrough();
-    component.openPopUp(numberValidation.valid);
-    expect(component.popUp.open).toHaveBeenCalled();
-  });
-
-  //corrigir
-  it(`#${HomeComponent.prototype.openPopUp.name} should contain the validation response when opened`, () => {
     const numberValidation = buildNumberValidation();
     spyOn(component.popUp,"open").and.callThrough();
     component.openPopUp(numberValidation.valid);

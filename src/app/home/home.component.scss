@@ -1,7 +1,7 @@
 .home {
   background-image: url("../../assets/background.svg");
   background-repeat: no-repeat;
-  background-size: 75%;
+  background-size: 70%;
   width: 100vw;
   min-height: 100vh;
   text-align: center;
@@ -13,9 +13,6 @@
     margin-top: 10px;
   }
 
-  @media (min-width: 1300px) {
-    background-size: 70%;
-  }
   @media (max-width: 995px) {
     background-size: 65%;
   }
@@ -50,9 +47,14 @@
 
 .text {
   text-align: left;
-  @media (max-width: 600px) {
-    padding: 0 0 0 5%;
+  padding-right: 10%;
+  @media (max-width: 855px) {
+    padding-right: 5%;
   }
+  @media (max-width: 600px) {
+    padding: 0 15% 0 5%;
+  }
+
 }
 
 .text h3{
@@ -78,13 +80,16 @@
     font-size: 2.8rem;
     line-height: 3.5rem;
   }
+  @media (max-width: 600px) {
+    line-height: 3.2rem;
+  }
 }
 
 .form {
   width: 50%;
   @media (max-width: 995px) {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
     margin: 20% 20px 0 0;
   }
   @media (max-width: 768px) {
@@ -92,7 +97,7 @@
     height: 100%;
   }
   @media (max-width: 600px) {
-    margin: 0 0 0 -4%;
+    margin: 0 0 0 0;
     flex-direction: column;
     justify-content: start;
   }
@@ -104,6 +109,9 @@
   margin: 25% auto 0 auto;
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+    margin: 0 auto;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: center;
@@ -172,6 +180,7 @@ mat-select-trigger {
   &.mat-form-field-appearance-fill .mat-form-field-flex{
     height: 50px;
     border-radius: 0 4px 0 0;
+    background-color: #F4F3F4;
   }
   @media (max-width: 1300px) {
     width: 180px;
@@ -187,7 +196,7 @@ mat-select-trigger {
 .country-field {
   width: 105px;
   &.mat-form-field-appearance-fill .mat-form-field-flex{
-    background-color: white;
+    background-color: #F4F3F4;
     height: 50px;
     border-right: 0.5px solid #6F6F6F;
     border-radius: 4px 0 0 0;

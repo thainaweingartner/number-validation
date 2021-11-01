@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.countryService.getCountrysInfo().subscribe((response: CountriesResponse[]) => {
+      this.formBuilder(response);
+
       const countries: CountriesResponse[] = response;
       countries.forEach(country => {
         if(country.callingCodes.length > 1 ) {
@@ -40,8 +42,8 @@ export class HomeComponent implements OnInit{
         }
       })
       this.countriesInfo = countries.sort((a, b) => a.name.localeCompare(b.name));
-      this.formBuilder(response);
-    }, error => console.log(error));
+
+    }, error => {throw Error(error)});
     this.formBuilder();
   }
 

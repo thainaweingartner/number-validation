@@ -5,13 +5,20 @@ table {
 }
 
 .container{
+  & td {
+    padding: 0 5px !important;
+  }
+  @media (max-width: 995px) {
+    & td {
+      font-size: 13px;
+    }
+  }
   @media (max-width: 600px) {
     width: 90vw;
     margin: 0 auto;
 
     & td {
       font-size: 12px;
-      padding: 0 5px !important;
     }
   }
 }

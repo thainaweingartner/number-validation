@@ -1,6 +1,6 @@
 # Prototype
 
-The prototype was created based on UX and UI concepts as functional use of colors, a clean layout with clear information of what the website does and how the user shoud use it. Intuitive input with error messages, and a select country code with alternation of information when choosing the country and after selecting it. The use of snackbars to display relevant informations. A table to show the numbers already validated and informations about them, so the user dont need to lose time retyping numbers. The possibility to clear the table data if wanted. [Figma Prototype](https://www.figma.com/file/DT7NiX0qD2wHK74KPMMpw4/G%2BD?node-id=0%3A1).
+The prototype was created based on UX and UI concepts as functional use of colors, a clean layout with clear information of what the website does and how the user shoud use it. Intuitive input with error messages, and a select input to choose the country code with alternation of information when showing the options and after selecting it. The use of snackbars to display relevant informations. A table to show the numbers already validated and informations about them, so the user dont need to lose time retyping numbers. The possibility to clear the table data if wanted. [Figma Prototype](https://www.figma.com/file/DT7NiX0qD2wHK74KPMMpw4/G%2BD?node-id=0%3A1).
 
 ## Running the project
 

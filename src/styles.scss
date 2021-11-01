@@ -28,6 +28,9 @@ $my-theme: mat.define-light-theme((
   @media (max-width: 600px) {
     font-size: 75%;
   }
+  @media (max-width: 350px) {
+    font-size: 65%;
+  }
 }
 
 html, body { height: 100%; }
