@@ -5,5 +5,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/numbervalidation/index.html"
+  to = "/index.html"
   status = 200

@@ -1,4 +1,5 @@
 beforeEach(() =>{
+  cy.viewport(1200, 780)
   cy.visit('/home');
 });
 
@@ -8,18 +9,18 @@ describe('Input validation test', () => {
   it('Should send a valid number and expect to render valid number confirmation', () => {
     cy.insertCountryAndNumberAndTryToValidate('Brazil', '45988391457');
     cy.contains('This number is valid!').should('be.visible');
-    cy.get('snack-bar-container').should('have.class','custom-snackbar-valid' );
+    cy.get('snack-bar-container').should('have.class','valid' );
   });
 
   it('Should send an invalid number and expect to render invalid number', () => {
     cy.insertCountryAndNumberAndTryToValidate('Brazil', '345345345345');
     cy.contains('This number is invalid!').should('be.visible');
-    cy.get('snack-bar-container').should('have.class','custom-snackbar-invalid' );
+    cy.get('snack-bar-container').should('have.class','invalid' );
   });
 
   it('Should send same number two times and expect to render correct information message', () => {
-    cy.insertCountryAndNumberAndTryToValidate('Brazil', '45988391457');
-    cy.insertCountryAndNumberAndTryToValidate('Brazil', '45988391457');
+    cy.insertCountryAndNumberAndTryToValidate('Brazil', '45988391455');
+    cy.insertCountryAndNumberAndTryToValidate('Brazil', '45988391455');
     cy.contains('Number already validated, please check the table').should('be.visible');
   });
 
