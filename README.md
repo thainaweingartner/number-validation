@@ -10,10 +10,6 @@ The prototype was created based on UX and UI concepts as functional use of color
 
 In order to run the project, clone it to your computer and make sure you have npm and ng installed. After that run `npm install` to install the project dependencies. Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Acessing WebProject
-
-Access [Number Validation](https://number-validation-thai.netlify.app) to see the project runing with out cloning any code.
-
 ## Running unit tests
 
 Run `ng test` to execute the unit tests, developed with Jasmine, via [Karma](https://karma-runner.github.io).
