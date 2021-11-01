@@ -1,3 +1,7 @@
+# About the Project
+
+An website to validate phone numbers all around the world. The user just have to select the country code and type the number with numeric charecters only and the plataform will check if the number is valid. If so, it will apper at a table with more informations about the number as country and carrier.
+
 # Prototype
 
 The prototype was created based on UX and UI concepts as functional use of colors, a clean layout with clear information of what the website does and how the user shoud use it. Intuitive input with error messages, and a select input to choose the country code with alternation of information when showing the options and after selecting it. The use of snackbars to display relevant informations. A table to show the numbers already validated and informations about them, so the user dont need to lose time retyping numbers. The possibility to clear the table data if wanted. [Figma Prototype](https://www.figma.com/file/DT7NiX0qD2wHK74KPMMpw4/G%2BD?node-id=0%3A1).
@@ -12,10 +16,10 @@ Access [Number Validation](https://karma-runner.github.io) to see the project ru
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests, developed with Jasmine, via [Karma](https://karma-runner.github.io).
 Run `ng test-safari` to execute the unit tests at Safari Browser via [Karma](https://karma-runner.github.io), make sure to click `open` when the browser launch and ask to open a folder.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng e2e` to execute the end-to-end tests developed with cypress.
 
