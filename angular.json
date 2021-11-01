@@ -31,8 +31,8 @@
               "src/assets"
             ],
             "styles": [
-            "src/styles.scss"
-          ],
+              "src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -102,6 +102,37 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "numbervalidation:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "numbervalidation:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "numbervalidation:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "numbervalidation:serve:production"
+            }
           }
         }
       }

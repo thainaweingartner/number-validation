@@ -8,7 +8,7 @@
         validate your number
       </h2>
     </div>
-    <div class="form__division">
+    <div class="form">
       <div *ngIf="countriesInfo.length > 0 as infos; else loader" class="infos">
         <form class="example-form" [formGroup]="phoneNumberForm" (ngSubmit)="validateNumber()" >
           <mat-form-field appearance="fill" class="country-field">

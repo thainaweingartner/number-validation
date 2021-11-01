@@ -21,7 +21,7 @@ export class NumberService {
     }
     const queryParams = {
       access_key: ACCESS_KEY,
-      number: phoneNumber
+      number: phoneNumber,
     }
     return this.httpClient.get<ValidationResponse>(this.url, {params: queryParams});
   }

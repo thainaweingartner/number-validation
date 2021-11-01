@@ -9,4 +9,10 @@ export interface ValidationResponse {
   location: string;
   carrier: string;
   line_type: string;
+  success?: boolean;
+  error?: {
+    code: number;
+    type: string;
+    info: string;
+  }
 }

@@ -6,6 +6,7 @@ import { ValidationResponse } from '../models/validation-response.model';
 import { CountriesResponse } from '../models/country-response.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { customValidationService } from '../utils/custom-validator';
+import { ErrorResponse } from '../models/error-reponse.model';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,18 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     this.countryService.getCountrysInfo().subscribe((response: CountriesResponse[]) => {
-      this.countriesInfo = response
+      const countries: CountriesResponse[] = response;
+      countries.forEach(country => {
+        if(country.callingCodes.length > 1 ) {
+          for(let i = 1; i < country.callingCodes.length; i++) {
+            countries.push({
+              ...country,
+              callingCodes: [country.callingCodes[i]],
+            })
+          }
+        }
+      })
+      this.countriesInfo = countries.sort((a, b) => a.name.localeCompare(b.name));
       this.formBuilder(response);
     }, error => console.log(error));
     this.formBuilder();
@@ -52,15 +64,18 @@ export class HomeComponent implements OnInit{
       this.numberService
         .validate(completeNumber)
         .subscribe((response: ValidationResponse) => {
-
-          if(response.valid) {
-            const newUserData:ValidationResponse[] = [...this.userData]
-            newUserData.push(response)
-            this.userData = newUserData;
+          if(response.success == false){
+            this.errorDealing(response.error)
+          } else {
+            if(response.valid) {
+              const newUserData:ValidationResponse[] = [...this.userData]
+              newUserData.push(response)
+              this.userData = newUserData;
+            }
+            this.openPopUp(response.valid);
+            this.phoneNumberForm.controls['phoneNumber'].reset()
           }
-          this.openPopUp(response.valid);
-          this.phoneNumberForm.controls['phoneNumber'].reset()
-      }, error => console.error(error));
+      }, error => {throw Error(error)});
     }
   }
 
@@ -74,19 +89,27 @@ export class HomeComponent implements OnInit{
 
   public openPopUp(validation: boolean) {
     this.popUp.open(`This number is ${validation ? 'valid' : 'invalid'}!`, '', {
-      panelClass: validation ? 'custom-snackbar-valid' : 'custom-snackbar-invalid',
+      panelClass: validation ? ['custom-snackbar', 'valid' ] : ['custom-snackbar', 'invalid'],
       verticalPosition: 'top',
     });
   }
 
   public openWarningPopUp(message: string) {
     this.warningPopUp.open(message, '', {
-      panelClass:'custom-snackbar-warning',
+      panelClass:['custom-snackbar', 'warning'],
       duration: 30000,
     });
   }
 
   public hasError(controlName: string, errorName: string) {
     return this.phoneNumberForm.controls[controlName].hasError(errorName);
+  }
+
+  private errorDealing(error: any): void {
+    if(error.code == 404) this.openWarningPopUp('Problem with validation request, we will fix the problem ASAP')
+    if(error.code == 101 || error.code == 103) this.openWarningPopUp('Problem accessing the validation API, please again try later')
+    if(error.code == 210 || error.code == 211 || error.code == 310) this.openWarningPopUp(error.info)
+    if(error.code == 104) this.openWarningPopUp('You have exceeded the number of validation allowed monthly')
+    if(error.code == 102) this.openWarningPopUp('Your account is not active. Please activate to use our services')
   }
 }
