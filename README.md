@@ -12,14 +12,13 @@ In order to run the project, clone it to your computer and make sure you have np
 
 ## Acessing WebProject
 
-Access [Number Validation](https://karma-runner.github.io) to see the project runing with out cloning any code.
+Access [Number Validation](https://number-validation-thai.netlify.app) to see the project runing with out cloning any code.
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests, developed with Jasmine, via [Karma](https://karma-runner.github.io).
-Run `ng test-safari` to execute the unit tests at Safari Browser via [Karma](https://karma-runner.github.io), make sure to click `open` when the browser launch and ask to open a folder.
+Run `ng test-safari` to execute the unit tests at Safari Browser via Karma, make sure to click `open` when the browser launch and ask to open a folder.
 
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests developed with cypress.
-
